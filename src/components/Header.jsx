@@ -10,6 +10,7 @@ const Header = () => {
 
   const handelChange = () => {
     // we can put throttle
+    if(!accounts.length) return
     dispatch(setMonthly(monthlyPayment))
   }
 
