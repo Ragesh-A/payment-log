@@ -10,7 +10,7 @@ function App() {
 		<Provider store={store}>
 			<main className='app'>
 				<SideBar />
-				<div className=''>
+				<div className='content'>
 					<Header />
 					<LineGraph />
 				</div>

@@ -1,0 +1,10 @@
+.sidebar {
+  padding: 3rem;
+}
+.balance-box {
+  flex-direction: column;
+  gap: 10px;
+}
+.balances {
+  font-weight: 700;
+}

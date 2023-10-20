@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setMonthly } from '../store/features/userAccounts'
 
+import './header.css'
+
 const Header = () => {
   const [total, setTotal] = useState(0)
   const [monthlyPayment, setMonthlyPayment] = useState()
@@ -21,9 +23,9 @@ const Header = () => {
   }, [accounts])
 
   return (
-    <div className='border-b-2 border-black py-2' data-testid='header'>
+    <div className='header border-b-2 border-black py-2' data-testid='header'>
       <h3 className='font-bold text-2xl my-3'>Initial Balance: {total}</h3>
-      <div className="">
+      <div className="monthly-input-wrap">
         <label htmlFor="payment">Monthly Payment</label>
         <input
           type="number"

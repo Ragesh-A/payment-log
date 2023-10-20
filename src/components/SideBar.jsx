@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createAccount } from '../store/features/userAccounts';
 
+import './sidebar.css'
+
 const SideBar = () => {
 	const [newAmount, setNewAmount] = useState();
 
@@ -17,10 +19,10 @@ const SideBar = () => {
 	};
 
 	return (
-		<div className='' data-testid='sidebar'>
+		<div className='sidebar' data-testid='sidebar'>
 			<h1 className=''>Accounts</h1>
 			<p className=''>Count: {accounts && accounts.length}</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='flex balance-box'>
         <b>
 
 				<label htmlFor='newAmount' className=''>
@@ -40,7 +42,7 @@ const SideBar = () => {
 				<p>Zero Balance</p>
 			) : 
 			// index as a key not recommended. But Each account has a single property - a balance
-			accounts?.map((account, index) => <p key={'index'}>Balance: { account?.balance}</p>)
+			accounts?.map((account, index) => <p key={'index'} className='balances'>Balance: { account?.balance}</p>)
 			}
 		</div>
 	);

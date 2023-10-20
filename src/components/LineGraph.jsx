@@ -13,6 +13,8 @@ import { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 
+import './lineGraph.css'
+
 ChartJS.register(
 	CategoryScale,
 	LinearScale,
@@ -33,13 +35,12 @@ const LineGraph = () => {
 		if (!monthlyPayment) return;
 		const total = accounts.reduce((acc, curr) => acc + curr.balance, 0);
     const newValues = [total];
-    const newLabel = []
+    const newLabel = [0]
     let balance = total;
-    let index = 0;
+    let index = 1;
     while (balance >= 0) {
-      const remain = balance - monthlyPayment
-      if (remain === 0) break;
-      newValues.push(remain);
+			const remain = balance - monthlyPayment
+      newValues.push(remain > 0 ? remain : '0');
       newLabel.push(index)
       index++
 			balance -= monthlyPayment;
@@ -49,7 +50,6 @@ const LineGraph = () => {
 	}, [monthlyPayment, accounts]);
 
 
-  console.log(label);
 
 	const data = {
 		labels: label,
@@ -59,7 +59,7 @@ const LineGraph = () => {
 				label: 'amount',
 				data: values,
 				borderColor: '#6060D8',
-				backgroundColor: '#6060D899',
+				backgroundColor: 'transparent',
 			},
 		],
 	};
@@ -79,6 +79,11 @@ const LineGraph = () => {
 
 	if (!monthlyPayment) return null;
 
-	return <>{data && values && <Line options={options} data={data} data-testid='graph'/>}</>;
+	return <>{data && values && (
+		<div className="">
+			<h3>Balance of account after a number of month</h3>
+			<Line options={options} data={data} data-testid='graph' className='line-chart'/>
+		</div>
+	)}</>;
 };
 export default LineGraph;
