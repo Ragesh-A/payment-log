@@ -17,7 +17,7 @@ const SideBar = () => {
 	};
 
 	return (
-		<div className=''>
+		<div className='' data-testid='sidebar'>
 			<h1 className=''>Accounts</h1>
 			<p className=''>Count: {accounts && accounts.length}</p>
       <form onSubmit={handleSubmit}>
