@@ -85,6 +85,6 @@ const LineGraph = () => {
 
 	if (!monthlyPayment) return null;
 
-	return <>{data && values && <Line options={options} data={data} />}</>;
+	return <>{data && values && <Line options={options} data={data} data-testid='graph'/>}</>;
 };
 export default LineGraph;

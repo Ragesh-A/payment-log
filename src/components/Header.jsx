@@ -20,7 +20,7 @@ const Header = () => {
   }, [accounts])
 
   return (
-    <div className='border-b-2 border-black py-2'>
+    <div className='border-b-2 border-black py-2' data-testid='header'>
       <h3 className='font-bold text-2xl my-3'>Initial Balance: {total}</h3>
       <div className="">
         <label htmlFor="payment">Monthly Payment</label>
