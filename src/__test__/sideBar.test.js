@@ -1,6 +1,6 @@
 import App from "../App";
 
-import { render, screen, cleanup } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 test('should render app', () => {
   render(<App />);
