@@ -26,36 +26,30 @@ ChartJS.register(
 
 const LineGraph = () => {
 	const { accounts, monthlyPayment } = useSelector((store) => store.user);
-	const [values, setValues] = useState([]);
+  const [values, setValues] = useState([]);
+  const [label, setLabel] = useState([])
 
 	useEffect(() => {
 		if (!monthlyPayment) return;
 		const total = accounts.reduce((acc, curr) => acc + curr.balance, 0);
-		const newValues = [total];
-		let balance = total;
+    const newValues = [total];
+    const newLabel = []
+    let balance = total;
+    let index = 0;
     while (balance >= 0) {
       const remain = balance - monthlyPayment
       if (remain === 0) break;
-      if (newValues.length === 12) break;
       newValues.push(remain);
+      newLabel.push(index)
+      index++
 			balance -= monthlyPayment;
 		}
 		setValues(newValues);
+		setLabel(newLabel);
 	}, [monthlyPayment, accounts]);
 
-	const label = [
-		'jan',
-		'feb',
-		'mar',
-		'apr',
-		'may',
-		'july',
-		'aug',
-		'sep',
-		'oct',
-		'nov',
-		'dec',
-	];
+
+  console.log(label);
 
 	const data = {
 		labels: label,
